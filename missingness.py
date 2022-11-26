@@ -7,8 +7,12 @@ st.write("# Diagnosis and Treatment of Data Missingness ")
 df = pd.DataFrame(pd.read_csv("airquality.CSV"))
 print(df.head())
 
-plt.hist(df['Ozone'], color='c')
+fig = plt.figure(figsize=(6,6))
+plt.subplot(211)
+plt.hist(df['Ozone'], color='c') 
 plt.show()
+
+plt.subplot(212)
 plt.hist(df['Solar.R'])
 plt.show()
 
@@ -24,6 +28,7 @@ data=load_data(100)
 if st.checkbox('Show raw data'):
     st.subheader('Raw data')
     st.write(data)
-    
+st.write ("### Histogram of Ozone and Solar")
+st.pyplot(fig)
 st.subheader('Bar graph showing the missing values')
 msno.bar(df)
