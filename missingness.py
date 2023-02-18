@@ -69,9 +69,7 @@ st.subheader("Complete Case Analaysis:Linear Regression")
 imputation = st.radio(
     "Select the imputation method",
     ('Compelete case', "MICE", "KNN means", "Stochastic", "Multiple"))
-inter = []
-slope =[]
-SE = []
+
 if imputation =='Compelete case':
     df_withoutNA = df.dropna()
     # print(df_withoutNA.head())
@@ -90,7 +88,7 @@ if imputation =='Compelete case':
     st.write("""Coef stimates of CCA: """)
     st.write(f"Intercept: {round(regr.intercept_, 2)}",  " and "
              f"Slope: {np.round(regr.coef_, 4)}")
-    st.write(f"Standard error: {round(se1,4)}")
+    st.write(f"Standard error: {np.round(se1,4)}")
 elif imputation =="KNN means":
     #knn = KNNImputer(n_neighbors=2, add_indicator=True)
     imputer = KNNImputer(n_neighbors=5)
@@ -138,6 +136,9 @@ elif imputation == "MICE":
          f"Slope: {np.round(regr.coef_, 4)}")
     st.write(f"Standard error: {np.round(se3,4)}")
     
+else:
+    st.write("Coming soon .....")
+    
 st.subheader("Summary table")
 # CCA
 df_withoutNA = df.dropna()
@@ -147,7 +148,7 @@ Y= np.asarray(df_withoutNA['Ozone'])
 X=X.reshape(-1,1)
 regr1= LinearRegression().fit(X,Y)
 # SD
-y_pred = regr.predict(X)
+y_pred = regr1.predict(X)
 residuals = Y - y_pred
 # calculate the standard deviation of the residuals
 std_dev = np.std(residuals)
@@ -155,7 +156,7 @@ std_dev = np.std(residuals)
 n = X.shape[0]
 se1 = std_dev / np.sqrt(n) * np.sqrt(np.diag(np.linalg.inv(X.T @ X)))
 
-#knn = KNNImputer(n_neighbors=2, add_indicator=True)
+#KNN
 imputer = KNNImputer(n_neighbors=5)
 # fit and transform the imputer on the data
 df_imp = imputer.fit_transform(df)
@@ -168,7 +169,7 @@ Y= np.asarray(df_imp['Ozone'])
 X=X.reshape(-1,1)
 regr2= LinearRegression().fit(X,Y)
 # SD
-y_pred = regr.predict(X)
+y_pred = regr2.predict(X)
 residuals = Y - y_pred
 # calculate the standard deviation of the residuals
 std_dev = np.std(residuals)
@@ -185,7 +186,7 @@ Y= np.asarray(df_imp['Ozone'])
 X=X.reshape(-1,1)
 regr3= LinearRegression().fit(X,Y)
 # SD
-y_pred = regr.predict(X)
+y_pred = regr3.predict(X)
 residuals = Y - y_pred
 # calculate the standard deviation of the residuals
 std_dev = np.std(residuals)
