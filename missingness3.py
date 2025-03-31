@@ -174,7 +174,7 @@ elif page == "Portfolio":
 
     # Photo Upload or Display
 # Display hosted photo (replace with your actual URL)
-    photo_url = "https://github.com/AmdomH/Showcase-streamlit-apps/blob/stream-lit-new/AW_KIT.jpg"  # Replace this!
+    photo_url = "https://raw.githubusercontent.com/AmdomH/Showcase-streamlit-apps/stream-lit-new/AW_KIT.jpg"  # Replace this!
     st.image(photo_url, caption="Amdom", width=200)
 
     # Bio Section
