@@ -173,14 +173,9 @@ elif page == "Portfolio":
     st.subheader("About Me")
 
     # Photo Upload or Display
-    st.write("Upload your photo below or use a default one:")
-    uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png", "jpeg"])
-    if uploaded_file is not None:
-        # Display uploaded image
-        st.image(uploaded_file, caption="Amdom", width=200)
-    else:
-        # Placeholder image (you can replace this URL with your own if hosted online)
-        st.image("https://via.placeholder.com/200x200.png?text=Amdom", caption="Amdom", width=200)
+# Display hosted photo (replace with your actual URL)
+    photo_url = "https://github.com/AmdomH/Showcase-streamlit-apps/blob/stream-lit-new/AW_KIT.jpg"  # Replace this!
+    st.image(photo_url, caption="Amdom", width=200)
 
     # Bio Section
     st.subheader("Bio")
@@ -204,4 +199,3 @@ elif page == "About":
     st.write("# About This App")
     st.write("This app analyzes air quality data, focusing on missing data treatment and regression analysis. "
              "Check out the Portfolio page to learn more about the author!")
-             
